@@ -29,10 +29,10 @@ void mystruct::operator delete(void* p)
     free(p); 
 }
 
-template<>
-void take_struct_dummy_template<int>(mystruct)
+template<typename T>
+void take_struct_dummy_template(mystruct)
 {
-    std::cout << "main " << __PRETTY_FUNCTION__ << std::endl;
+    std::cout << "main " << __func__ << std::endl;
 }
 
 int main() 

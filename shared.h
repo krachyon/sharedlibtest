@@ -46,18 +46,18 @@ SHAREDLIB_EXPORT void take_struct_rval(mystruct&&);
 
 SHAREDLIB_EXPORT void take_struct(std::unique_ptr<mystruct>);
 
-template<typename T>
-SHAREDLIB_EXPORT void take_struct_dummy_template(mystruct)
-{
-    std::cout << "shared lib " << __PRETTY_FUNCTION__ << std::endl;
-}
+//template<typename T>
+//SHAREDLIB_EXPORT void take_struct_dummy_template(mystruct)
+//{
+//    std::cout << "shared lib " << __PRETTY_FUNCTION__ << std::endl;
+//}
 
 
 SHAREDLIB_EXPORT void take_template_struct(templateStruct<void>);
 
-template<typename T>
-SHAREDLIB_EXPORT void take_template_struct_template(templateStruct<T> arg)
-{
-    templateStruct<T> copy(arg);
-    std::cout << __func__ << std::endl;
-}
+//template<typename T>
+//SHAREDLIB_EXPORT void take_template_struct_template(templateStruct<T> arg)
+//{
+//    templateStruct<T> copy(arg);
+//    std::cout << __func__ << std::endl;
+//}

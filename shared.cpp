@@ -15,6 +15,19 @@ mystruct::~mystruct()
     std::cout << "shared destructor" << std::endl;
 }
 
+void* mystruct::operator new(size_t size) 
+{ 
+    std::cout<< "shared lib new operator with size: " << size << std::endl; 
+    void * p = ::new mystruct();
+    return p; 
+} 
+
+void mystruct::operator delete(void* p) 
+{ 
+    std::cout<< "shared lib delete operator " << std::endl; 
+    free(p); 
+} 
+
 
 void take_struct(mystruct arg)
 {
@@ -22,9 +35,19 @@ void take_struct(mystruct arg)
     std::cout << "take_struct" << std::endl;
 }
 
+void take_struct_rval(mystruct&& arg)
+{
+    std::cout << __func__ << std::endl;
+}
+
+void take_struct(std::unique_ptr<mystruct> arg)
+{
+    std::cout << __func__ << std::endl;
+}
 
 void take_template_struct(templateStruct<void> arg)
 {
     templateStruct<void> copy(arg);
     std::cout << __func__ << std::endl;
 }
+

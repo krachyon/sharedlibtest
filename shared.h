@@ -1,12 +1,16 @@
 #pragma once
 #include "sharedlib_export.h"
 #include <iostream> 
+#include <memory>
 
 struct mystruct
 {
     mystruct();
     mystruct(mystruct const&);
     ~mystruct();
+    
+    void* operator new(size_t size);
+    void operator delete(void* p);
 };
 
 template<typename T>
@@ -37,6 +41,17 @@ templateStruct<T>::~templateStruct()
 
 
 SHAREDLIB_EXPORT void take_struct(mystruct);
+
+SHAREDLIB_EXPORT void take_struct_rval(mystruct&&);
+
+SHAREDLIB_EXPORT void take_struct(std::unique_ptr<mystruct>);
+
+template<typename T>
+SHAREDLIB_EXPORT void take_struct_dummy_template(mystruct)
+{
+    std::cout << "shared lib " << __PRETTY_FUNCTION__ << std::endl;
+}
+
 
 SHAREDLIB_EXPORT void take_template_struct(templateStruct<void>);
 

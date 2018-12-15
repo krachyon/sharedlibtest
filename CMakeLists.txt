@@ -4,11 +4,17 @@ project(sharedlibrarytest)
 
 include(GenerateExportHeader)
 
-#set(CMAKE_CXX_COMPILER g++)
-set(CMAKE_CXX_COMPILER clang++)
+if (NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+    #set(CMAKE_CXX_COMPILER g++)
+    set(CMAKE_CXX_COMPILER clang++)
+    set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpic -Wall -Wextra -Wpedantic -std=c++17")
-set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "${CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS} -rdynamic")
+    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpic -Wall -Wextra -Wpedantic -std=c++17 -stdlib=libc++ -flto")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpic -Wall -Wextra -Wpedantic -std=c++17")
+    set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "${CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS} -rdynamic")
+    #set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS " ")
+endif()
+
 message(${CMAKE_CXX_FLAGS})
 message(${CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS})
 

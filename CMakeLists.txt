@@ -4,7 +4,10 @@ project(sharedlibrarytest)
 
 include(GenerateExportHeader)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpic ")
+#set(CMAKE_CXX_COMPILER g++)
+set(CMAKE_CXX_COMPILER clang++)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpic -Wall -Wextra -Wpedantic -std=c++17")
 set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "${CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS} -rdynamic")
 message(${CMAKE_CXX_FLAGS})
 message(${CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS})

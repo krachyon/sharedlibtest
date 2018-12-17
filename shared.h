@@ -25,6 +25,8 @@ SHAREDLIB_EXPORT void take_struct(mystruct);
 
 SHAREDLIB_EXPORT void take_struct_rval(mystruct&&);
 
-SHAREDLIB_EXPORT void take_struct(std::unique_ptr<mystruct>);
+SHAREDLIB_EXPORT void take_struct_uniqe(std::unique_ptr<mystruct> arg);
+
+SHAREDLIB_EXPORT void take_struct_uniqe_no_move(std::unique_ptr<mystruct> arg);
 
 SHAREDLIB_EXPORT void libLocal();

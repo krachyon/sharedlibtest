@@ -73,7 +73,12 @@ int main()
     std::cout<<std::endl;
     std::cout << "creating/passing struct as unique_ptr" << std::endl << std::endl;
     auto heap = std::make_unique<mystruct>();
-    take_struct(std::move(heap));
+    take_struct_uniqe_no_move(std::move(heap));
+
+    std::cout << std::endl;
+    std::cout << "creating/passing struct as unique_ptr, moving it in lib" << std::endl << std::endl;
+    auto heap2 = std::make_unique<mystruct>();
+    take_struct_uniqe(std::move(heap2));
 
     std::cout << std::endl;
     std::cout << "library local struct" << std::endl << std::endl;

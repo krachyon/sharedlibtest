@@ -73,8 +73,15 @@ void take_struct_rval(mystruct&& arg)
   std::cout << __func__ << std::endl;
 }
 
-void take_struct(std::unique_ptr<mystruct> arg)
+void take_struct_uniqe(std::unique_ptr<mystruct> arg)
 {
+  auto moved = std::move(arg);
+  std::cout << __func__ << std::endl;
+}
+
+void take_struct_uniqe_no_move(std::unique_ptr<mystruct> arg)
+{
+    auto moved = std::move(arg);
     std::cout << __func__ << std::endl;
 }
 

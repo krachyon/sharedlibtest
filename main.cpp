@@ -76,5 +76,9 @@ int main()
     take_struct(std::move(heap));
 
     std::cout << std::endl;
+    std::cout << "library local struct" << std::endl << std::endl;
+    libLocal();
+
+    std::cout << std::endl;
     std::cout << "scope ends here" << std::endl;
 }

@@ -78,3 +78,8 @@ void take_struct(std::unique_ptr<mystruct> arg)
     std::cout << __func__ << std::endl;
 }
 
+
+void libLocal()
+{
+  mystruct libLocal;
+}

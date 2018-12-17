@@ -18,7 +18,7 @@ mystruct::~mystruct()
 void* mystruct::operator new(size_t size) 
 { 
     std::cout<< "shared lib new operator with size: " << size << std::endl; 
-    void * p = ::new mystruct();
+    void* p = ::new mystruct();
     return p; 
 } 
 
@@ -42,12 +42,6 @@ void take_struct_rval(mystruct&& arg)
 
 void take_struct(std::unique_ptr<mystruct> arg)
 {
-    std::cout << __func__ << std::endl;
-}
-
-void take_template_struct(templateStruct<void> arg)
-{
-    templateStruct<void> copy(arg);
     std::cout << __func__ << std::endl;
 }
 

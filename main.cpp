@@ -29,25 +29,18 @@ void mystruct::operator delete(void* p)
     free(p); 
 }
 
-template<typename T>
-void take_struct_dummy_template(mystruct)
-{
-    std::cout << "main " << __func__ << std::endl;
-}
-
 int main() 
 {
+    std::cout << "creating/passing struct by value..." << std::endl;
     mystruct st;
     take_struct(st);
-    std::cout << std::endl;
-    take_struct_dummy_template<void>(st);
-    std::cout << std::endl;
-    take_struct_dummy_template<int>(st);
-    std::cout << std::endl;
-    take_struct_rval(std::move(st));
 
+    std::cout << std::endl;
+    std::cout << "passing struct with move()/rvalue" << std::endl;
+    take_struct_rval(std::move(st));
+  
     std::cout<<std::endl;
-    
+    std::cout << "creating/passing struct as unique_ptr" << std::endl;
     auto heap = std::make_unique<mystruct>();
     take_struct(std::move(heap));
 }
